@@ -10,19 +10,18 @@ class Review():
         self.transforms = transforms
 
     def __getitem__(self, idx):
-            x = self.data[idx]
-            y = self.label[idx]
+        x = self.data[idx]
+        y = self.label[idx]
 
-            if self.transforms is not None:
-                x = self.transforms(x)
-            
-            if y < 3:
-                y_tensor = -1
+        if self.transforms is not None:
+            x = self.transforms(x)
+        if y < 3:
+            y_tensor = -1
 
-            if y > 3:
-                y_tensor = 1
-            
-            if y == 0:
-                y_tensor = 0
+        if y > 3:
+            y_tensor = 1
+        
+        if y == 0:
+            y_tensor = 0
 
-            return x,y_tensor
+        return x,y_tensor
