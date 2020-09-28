@@ -3,10 +3,10 @@ import pandas as pd
 
 
 class Review():
-    def __init__(self, path, transforms):
-        self.data = pd.read_csv(path)
-        self.data = self.data['Review']
-        self.label = self.data['Rating']
+    def __init__(self, path, transforms=None):
+        self.df = pd.read_csv(path)
+        self.data = self.df['Review']
+        self.label = self.df['Rating']
         self.transforms = transforms
 
     def __getitem__(self, idx):
@@ -25,11 +25,4 @@ class Review():
             if y == 0:
                 y_tensor = 0
 
-            return x,y
-
-
-
-
-
-
-    
+            return x,y_tensor
